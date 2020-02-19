@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TextInput, ScrollView, Button, FlatList, Dimensions, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import { hide } from 'expo/build/launch/SplashScreen';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 export default class App extends React.Component {
 
@@ -71,12 +73,21 @@ export default class App extends React.Component {
                 data={this.state.data}
                 renderItem={({ item }) => (
                   <View style={[styles.movieBox, {width: Dimensions.get('window').width/2-24, height:220}]} >
-                    
-                    <Text>{`${item.original_title}`}</Text>
+                    <Image source={{uri:'https://image.tmdb.org/t/p/w500'+item.poster_path}} style={styles.movieBoxImg}/>
+                    <View style={{flex:1,flexDirection:'row', flexWrap:'wrap', justifyContent:'space-between'}}>
+                      <Text style={styles.movieBoxText}numberOfLines={1}>{`${item.original_title}`}</Text>
+                      <Text style={styles.movieBoxText,{color:'red',alignSelf:'flex-end'}}>HH:MM</Text>
+                    </View>
+                    <View style={{flex:1,flexDirection:'row', flexWrap:'wrap', justifyContent:'space-between'}}>
+                      <Text style={{fontSize:11, color:'grey'}} numberOfLines={1}>Cast ...</Text>
+                    </View>
+                    <View style={{flex:1,flexDirection:'row', flexWrap:'wrap'}}>
+                      <Text style={{color:'grey',flex:1,fontSize:10}}>Genre</Text>
+                      <Text style={{color:'grey',alignSelf:'flex-end',fontSize:10}}>(Rating)</Text>
+                    </View>
                   </View>
                 )}
                 numColumns={2}
-
               />
             </View>
           </ScrollView>
@@ -129,7 +140,8 @@ const styles = StyleSheet.create({
     elevation: 8,
     shadowOffset: {width: 10, height: 10},
     shadowOpacity: 1.0,
-    shadowColor: '#ddd'
+    shadowColor: '#ddd',
+    overflow: "hidden"
   },
   'movieBox:last-child': {
     backgroundColor: '#ddd',
@@ -141,5 +153,14 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 10, height: 10},
     shadowOpacity: 1.0,
     shadowColor: '#ddd'
-  }
+  },
+  movieBoxImg: {
+    height:'70%',
+    resizeMode:'stretch',
+  },
+  movieBoxText: {
+    fontSize: 12,
+    flex:2,
+    color:'blue'
+  },
 });
