@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TextInput, ScrollView, Button, FlatList, Dimensions, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Movie from './Movie'
 
 export default class App extends React.Component {
 
