@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: '600',
         color:'#222',
-
+        flex: 2
     },
     movieRating: {
         fontSize: 18,
