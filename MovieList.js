@@ -116,7 +116,7 @@ export default class MovieList extends React.Component {
                         {`${item.original_title}`}
                       </Text>
                       <Text style={{color:'red',alignSelf:'flex-end',fontSize:12}}>
-                        {`${item.runtime}`}
+                        {`${item.runtime}`} Min
                       </Text>
                     </View>
                     <View style={{flex:1,flexDirection:'row', flexWrap:'wrap', justifyContent:'space-between'}}>
